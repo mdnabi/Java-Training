@@ -7,10 +7,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.lti.training.Scomponent.Calculator;
 import com.lti.training.Scomponent.HelloWorld;
 import com.lti.training.Scomponent.SpringInterface;
+import com.lti.training.Scomponent.TextEditor;
 
 
 public class TestCode {
-	
 	public static void main(String[] args) {
 		//Loading the IoC (Inversion of Control) container
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
@@ -22,6 +22,9 @@ public class TestCode {
 		for(int i=0;i<5;i++) {
 			SpringInterface cal= (SpringInterface)context.getBean("Calci");  //class obj= (class)context.getbean("id")
 		}
+		
+		TextEditor te = (TextEditor) context.getBean("te");
+		te.loadTextDocument("abc.txt");
 			
 //		System.out.println(cal.SayAdd(4, 10));
 //		System.out.println(cal.SaySub(15, 12));	
