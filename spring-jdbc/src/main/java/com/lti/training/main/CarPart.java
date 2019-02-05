@@ -8,14 +8,6 @@ public class CarPart {
 	private double price;
 	private int quantity;
 	
-	public CarPart(int partNo, String partName, String carModel, double price, int quantity) {
-		super();
-		this.partNo = partNo;
-		this.partName = partName;
-		this.carModel = carModel;
-		this.price = price;
-		this.quantity = quantity;
-	}
 	public int getPartNo() {
 		return partNo;
 	}
