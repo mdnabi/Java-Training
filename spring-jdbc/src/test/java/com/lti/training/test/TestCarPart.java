@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.lti.training.dao.CarPartsDaoImpl1;
+import com.lti.training.dao.CarPartsDaoImpl2;
+import com.lti.training.dao.CarPartsDaoImpl3;
 import com.lti.training.exception.DataAccessException;
 import com.lti.training.main.CarPart;
 
@@ -17,10 +19,13 @@ public class TestCarPart {
 	public void addPart() throws DataAccessException {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-		CarPartsDaoImpl1 car = (CarPartsDaoImpl1) context.getBean("carPartDao1");
+//		CarPartsDaoImpl1 car = (CarPartsDaoImpl1) context.getBean("carPartDao1");
+//		CarPartsDaoImpl2 car = (CarPartsDaoImpl2) context.getBean("carPartDao2");
+		CarPartsDaoImpl3 car = (CarPartsDaoImpl3) context.getBean("carPartDao3");
 		
-		
-		CarPartsDaoImpl1 carPart = new CarPartsDaoImpl1();
+//		CarPartsDaoImpl1 carPart = new CarPartsDaoImpl1();
+//		CarPartsDaoImpl2 carPart = new CarPartsDaoImpl2();
+		CarPartsDaoImpl3 carPart = new CarPartsDaoImpl3();
 		CarPart part = new CarPart();
 		
 		Scanner input = new Scanner(System.in);
