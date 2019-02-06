@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.lti.training.exception.DataAccessException;
@@ -17,23 +21,17 @@ import com.lti.training.main.CarPart;
 @Component("carPartDao2")
 public class CarPartsDaoImpl2 implements CarPartsDao {
 
+	//Dependency Injection
+	@Autowired
+	@Qualifier("oracleDataSource")
+	private DataSource dataSource; //Creating the variable of DataSource
+	
 	public void addNewPart(CarPart carPart) throws DataAccessException {
 		Connection conn = null;
 		PreparedStatement pstmt = null; //Precompiled SQL Comments
-		try {
+		try {		
 			
-			InputStream is = this.getClass().getClassLoader().getResourceAsStream("dev-db.properties");
-			Properties dbProperties = new Properties();
-			
-			dbProperties.load(is);
-			
-			String driverClassName = dbProperties.getProperty("driverClassName");
-			String url = dbProperties.getProperty("url");
-			String username = dbProperties.getProperty("username");
-			String password = dbProperties.getProperty("password");
-			
-			Class.forName(driverClassName);
-			conn = DriverManager.getConnection(url,username,password);		
+			conn = dataSource.getConnection();		
 			
 			pstmt = conn.prepareStatement("insert into carparts values(?,?,?,?,?)"); //To add value in the runtime '?' is added inside values
 			
@@ -47,7 +45,7 @@ public class CarPartsDaoImpl2 implements CarPartsDao {
 			pstmt.executeUpdate(); //Inserting data in table and updating table
 			
 			System.out.println("Data inserted");
-		}catch(ClassNotFoundException | IOException | SQLException e) {
+		}catch(SQLException e) {
 			throw new DataAccessException ("Data cannot be Accessed", e);
 		}
 

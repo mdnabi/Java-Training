@@ -8,4 +8,12 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<context:component-scan base-package="com.lti.training.dao"/>
+	
+	<!-- DataSource dependency -->
+	<bean id="oracleDataSource" class="oracle.jdbc.pool.OracleDataSource">
+    <property name="dataSourceName" value="ds"/>
+    <property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+    <property name="user" value="hr"/>
+    <property name="password" value="hr"/>
+</bean>
 </beans>
