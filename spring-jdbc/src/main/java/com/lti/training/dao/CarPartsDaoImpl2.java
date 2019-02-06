@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 import com.lti.training.exception.DataAccessException;
 import com.lti.training.main.CarPart;
 
-@Component("carPartDao1")
-public class CarPartsDaoImpl1 implements CarPartsDao {
+@Component("carPartDao2")
+public class CarPartsDaoImpl2 implements CarPartsDao {
 
 	public void addNewPart(CarPart carPart) throws DataAccessException {
 		Connection conn = null;
