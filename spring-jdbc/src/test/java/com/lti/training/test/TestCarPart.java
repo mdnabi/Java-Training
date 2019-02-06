@@ -24,10 +24,7 @@ public class TestCarPart {
 //		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao1");
 //		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao2");
 		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao3");
-		
-//		CarPartsDaoImpl1 carPart = new CarPartsDaoImpl1();
-//		CarPartsDaoImpl2 carPart = new CarPartsDaoImpl2();
-		CarPartsDaoImpl3 carPart = new CarPartsDaoImpl3();
+
 		CarPart part = new CarPart();
 		
 		Scanner input = new Scanner(System.in);
@@ -50,7 +47,8 @@ public class TestCarPart {
 	@Test
 	public void getCarPart() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao3");
+//		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao3");
+		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao4");
 		List<CarPart> list = car.getAvailableParts();
 		System.out.println("Part Name\t CarModel\t PartNo\t Price\t Quantity");
 		for(CarPart cpart: list) {
