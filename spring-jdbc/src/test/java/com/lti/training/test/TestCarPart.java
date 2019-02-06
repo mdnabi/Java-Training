@@ -1,11 +1,13 @@
 package com.lti.training.test;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.lti.training.dao.CarPartsDao;
 import com.lti.training.dao.CarPartsDaoImpl1;
 import com.lti.training.dao.CarPartsDaoImpl2;
 import com.lti.training.dao.CarPartsDaoImpl3;
@@ -19,9 +21,9 @@ public class TestCarPart {
 	public void addPart() throws DataAccessException {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-//		CarPartsDaoImpl1 car = (CarPartsDaoImpl1) context.getBean("carPartDao1");
-//		CarPartsDaoImpl2 car = (CarPartsDaoImpl2) context.getBean("carPartDao2");
-		CarPartsDaoImpl3 car = (CarPartsDaoImpl3) context.getBean("carPartDao3");
+//		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao1");
+//		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao2");
+		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao3");
 		
 //		CarPartsDaoImpl1 carPart = new CarPartsDaoImpl1();
 //		CarPartsDaoImpl2 carPart = new CarPartsDaoImpl2();
@@ -43,5 +45,16 @@ public class TestCarPart {
 		part.setQuantity(quantity);
 		
 		car.addNewPart(part);
+	}
+	
+	@Test
+	public void getCarPart() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+		CarPartsDao car = (CarPartsDao) context.getBean("carPartDao3");
+		List<CarPart> list = car.getAvailableParts();
+		System.out.println("Part Name\t CarModel\t PartNo\t Price\t Quantity");
+		for(CarPart cpart: list) {
+			System.out.println(cpart.getPartName() + "\t\t" + cpart.getCarModel() + "\t\t" + cpart.getPartNo() + "\t\t" + cpart.getPrice() + "\t\t" + cpart.getQuantity());
+		}
 	}
 }

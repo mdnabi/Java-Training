@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
@@ -13,6 +14,8 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.lti.training.exception.DataAccessException;
@@ -66,8 +69,8 @@ public class CarPartsDaoImpl2 implements CarPartsDao {
 	}
 
 	public List<CarPart> getAvailableParts() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
+
+
