@@ -1,6 +1,7 @@
 package com.lti.training.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.lti.training.entity.Movie;
 import com.lti.training.service.MovieService;
 
 @RestController
+@CrossOrigin	//Set the headers for talking to the angular
 public class MovieController {
 
 	@Autowired
