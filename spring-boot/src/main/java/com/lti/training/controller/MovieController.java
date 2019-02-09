@@ -21,7 +21,7 @@ public class MovieController {
 	@RequestMapping(path="/movie/add", method=RequestMethod.POST)
 	public String add(@RequestBody Movie movie) {
 		movieService.add(movie);
-		return "Movie record added successfully";
+		return "{\"status\" : \"Movie added successfully!\"}";
 	}
 	
 	@RequestMapping(path="/movie/{id}", method=RequestMethod.GET)
